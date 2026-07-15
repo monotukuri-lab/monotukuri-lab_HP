@@ -24,7 +24,6 @@ export default defineConfig({
         contact: resolve(__dirname, 'pages/contact.html'),
         python: resolve(__dirname, 'pages/python.html'),
         game: resolve(__dirname, 'pages/game.html'),
-        projects: resolve(__dirname, 'pages/projects.html'),
         admin: resolve(__dirname, 'admin/admin.html'),
         secret: resolve(__dirname, 'admin/secret.html'),
         secret2: resolve(__dirname, 'admin/secret2.html'),
