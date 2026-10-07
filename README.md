@@ -140,8 +140,8 @@ git push origin main
 配布用やバックアップとして成果物を保存したい場合は、バージョンタグをプッシュします。
 
 ```bash
-git tag v3.1.1
-git push origin v3.1.1
+git tag v3.1.2
+git push origin v3.1.2
 ```
 
 GitHub Actions が自動で dist フォルダを zip 形式に圧縮し、GitHub の Releases ページに配布ファイルを添付したリリースを生成します。
