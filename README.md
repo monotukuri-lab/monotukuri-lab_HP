@@ -1,119 +1,85 @@
 # 舞鶴高専 ものつくりラボ 公式サイト
 
-Vue 3 / Vite で構築された舞鶴高専ものつくりラボの公式ウェブサイトです。
+Vue 3 と Vite で構築した舞鶴高専ものつくりラボの公式Webサイトです。
+このドキュメントでは、GitHub Actions を活用した開発環境の準備から、ページの更新、自動デプロイまでの運用手順を解説します。
 
-## このドキュメントについて
+## 概要
 
-このREADMEはサイトの運営を引き継ぐTAやスタッフ向けに作成されています。
-プログラミング初心者でも円滑に運営できるように、基本的な操作手順や編集方法を解説しています。
+サイトは Vite を用いてビルドされ、GitHub Actions を通じて GitHub Pages に自動デプロイされます。
 
----
+## 開発環境の準備
 
-## クイックスタート
-
-開発環境の準備とローカルサーバーの起動手順です。
+ローカル環境でサイトの動作確認や編集を行うための手順です。
 
 ### 必要なソフトウェア
 
 事前に以下のツールをインストールしてください。
 
-* Node.js 18以上 (公式サイト: https://nodejs.org/ )
-* Git (公式サイト: https://git-scm.com/ )
-* VSCode (推奨エディタ)
+* Node.js 20以上
+* Git
+* Visual Studio Code
 
-### 手順
+### セットアップ手順
 
-* リポジトリのクローン
+* リポジトリをクローンします
 ```bash
-git clone https://github.com/monotukuri-lab/monotukuri-lab_HP
+git clone https://github.com/monotukuri-lab/monotukuri-lab_HP.git
+cd monotukuri-lab_HP
 ```
 
-* 依存パッケージのインストール
+* 依存パッケージをインストールします
 ```bash
 npm install
 ```
 
-* 開発サーバーの起動
+* 開発サーバーを起動します
 ```bash
 npm run dev
 ```
 
-ブラウザで http://localhost:5173 にアクセスするとサイトが表示されます。ファイルを保存すると変更内容が即座に反映されます。
+ブラウザで http://localhost:5173 にアクセスするとサイトが表示されます。ファイルを編集して保存すると、ブラウザに変更内容が即座に反映されます。
 
----
+## ディレクトリ構成
 
-## プロジェクト構造
+主要なファイルやフォルダの役割です。
 
-主要なファイルおよびディレクトリの役割一覧です。
+* index.html: トップページ
+* pages/: 公開ページ群
+* pages/activities.html: 活動内容とイベント一覧
+* pages/facility.html: 施設や機材の紹介
+* pages/members.html: スタッフ紹介
+* pages/contact.html: お問い合わせフォーム
+* pages/game.html: ミニゲームページ
+* pages/python.html: ブラウザ上でのPython実行環境
+* events/: 各イベント専用の詳細ページ
+* events/3dcontest2025.html: 2025年3Dコンテスト
+* events/3dcontest2026.html: 2026年3Dコンテスト
+* events/3dprinter2025.html: 2025年3Dプリンター講習会
+* admin/: 管理者向けページ群
+* admin/admin.html: 管理ガイド
+* images/: 写真やロゴなどの画像ファイル
+* css/style.css: サイト全体の共通スタイル
+* js/: JavaScriptスクリプト群
+* vite.config.js: Viteのマルチページビルド設定ファイル
+* .github/workflows/build-and-release.yml: 自動ビルド / デプロイ / リリース用のワークフロー
 
-```
-monotukuri-lab_HP/
-├── index.html              # トップページ
-├── pages/                  # 公開ページ
-│   ├── activities.html     # 活動内容 / イベント一覧
-│   ├── facility.html       # 施設 / 機材紹介
-│   ├── members.html        # スタッフ紹介
-│   ├── contact.html        # お問い合わせ
-│   ├── game.html          # ミニゲーム
-│   └── python.html        # Python実行環境
-├── admin/                  # 管理者用ページ
-│   ├── admin.html         # 管理ガイド
-│   ├── secret.html        # 隠しページ
-│   └── secret2.html       # 隠しページ
-├── events/                 # 各イベントの詳細ページ
-│   ├── 3dcontest2025.html
-│   └── 3dprinter2025.html
-├── images/                 # 画像ファイル
-│   ├── staff/             # スタッフ写真
-│   └── ...                # その他画像
-├── css/
-│   └── style.css          # 共通スタイル
-├── js/
-│   ├── mobile-menu.js     # モバイル用メニュー制御
-│   └── vue-apps.js        # Vueアプリケーション
-└── vite.config.js         # ビルド / ルーティング設定
-```
+## サイトの更新手順
 
----
+日常的に行う更新作業の手順です。
 
-## コンテンツの編集方法
+### トップページのイベント告知バナー
 
-よく行う更新作業の手順です。
+編集対象ファイル: index.html
 
-### トップページのイベントバナー表示
+* index.html を開きます。
+* 70行目付近にあるコメントアウトされたバナー記述を探します。
+* コメントタグを解除し、リンク先URLやイベント名、開催日時を書き換えます。
+* イベント終了後は再度コメントアウトして非表示に戻します。
 
-編集対象ファイル: `index.html`
+### 新しいページの追加
 
-* `index.html` を開きます。
-* 50行目付近にあるコメントアウトされたバナー記述を探します。
-
-```html
-<!-- イベント告知バナー
-<div class="max-w-xl mx-auto mt-8 mb-6">
-  <a href="events/your-event.html"
-    class="block bg-blue-600 hover:bg-blue-700 text-white text-center text-lg font-bold rounded-xl shadow-lg px-6 py-5">
-    <div>イベント名</div>
-    <div class="mt-2">
-      <span class="text-yellow-300 text-xl">日時情報</span>
-    </div>
-  </a>
-</div>
--->
-```
-
-* コメントアウトタグ ( `<!--` および `-->` ) を削除します。
-* リンク先 ( `href` ) やイベント名、日時を書き換えます。
-* イベント終了後は再度コメントアウトして非表示にします。
-
----
-
-### 新しいイベントページの追加
-
-手順:
-
-* `events/` ディレクトリ配下に新しいHTMLファイルを作成します。既存の `3dprinter2025.html` などを複製して作成するとスムーズです。
-* ファイル内の本文や日時、詳細内容を編集します。
-* `vite.config.js` に新しいページのルート設定を追加します。
+* pages/ または events/ ディレクトリ内にHTMLファイルを作成します。既存のファイルを複製して編集するとスムーズです。
+* vite.config.js の rollupOptions.input に新しいページのパスを追加します。追加を忘れると本番用ビルドに含まれません。
 
 ```javascript
 rollupOptions: {
@@ -121,164 +87,128 @@ rollupOptions: {
     main: resolve(__dirname, 'index.html'),
     // 既存ページ...
     
-    // 新しいイベントページを追加
+    // 新しいページを追加
     newevent: resolve(__dirname, 'events/newevent2026.html'),
   }
 }
 ```
 
-* `npm run dev` を再起動して変更を適用します。
-
----
+* 開発サーバーを再起動して、ページが正しく表示されるか確認します。
 
 ### スタッフ情報の更新
 
-編集対象ファイル: `pages/members.html`
+編集対象ファイル: pages/members.html
 
-* `pages/members.html` を開きます。
-* スタッフカードのコードブロックを探します。
+* pages/members.html を開きます。
+* 各スタッフのカード要素を探します。
+* 氏名、所属、写真、担当曜日、メッセージを書き換えます。
+* 新しいスタッフを追加する場合は、カード要素を複製して追加します。
 
-```html
-<div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
-  <img src="../images/staff/staff1.jpg" alt="名前"
-    class="w-32 h-32 object-cover rounded-full mb-4 border-4 border-blue-200">
-  <h3 class="font-bold text-lg mb-1">氏名</h3>
-  <p class="text-sm text-gray-600 mb-1">所属：専攻科 電気電子システム</p>
-  <p class="text-sm text-gray-600 mb-1">技術提供：技術領域</p>
-  <p class="text-sm text-gray-600 mb-1">担当曜日：月曜日</p>
-  <p class="text-sm text-gray-700 mt-2">一言メッセージ</p>
-</div>
-```
+### 機材情報の更新
 
-* 氏名、所属、画像パス、担当曜日、メッセージなどを書き換えます。
-* スタッフを新規追加する場合は、このカード要素を複製して追加します。
+編集対象ファイル: pages/facility.html
 
----
+* pages/facility.html を開きます。
+* 機材紹介の枠組みを探し、写真や機材名、説明文を書き換えます。
 
-### 施設 / 機材情報の更新
+### 画像ファイルの追加
 
-編集対象ファイル: `pages/facility.html`
+* 画像ファイルは images/ ディレクトリ内の適切な場所に保存します。
+* HTMLファイルからは相対パスで参照します。
+* 画像サイズは横幅1200px以下、ファイルサイズは500KB以下を目安に圧縮してください。
 
-* `pages/facility.html` を開きます。
-* 機材紹介の枠組みを探し、画像パス、機材名、説明文を書き換えます。
+## 公開とデプロイの運用
 
----
+GitHub Actions による自動化を活用した運用手順です。
 
-### 画像の追加
+### 自動デプロイによるサイト公開
 
-* 画像ファイルを `images/` ディレクトリ内に配置します。
-  * スタッフ写真: `images/staff/`
-  * イベント写真: `images/events/` など
-* HTMLファイルから相対パスで参照します。
-
-```html
-<img src="../images/your-image.jpg" alt="説明">
-```
-
-画像サイズの推奨設定:
-* 横幅 1200px 以下
-* 形式 JPG または WebP
-* ファイルサイズ 500KB 以下
-
----
-
-## デプロイ方法
-
-変更内容を本番サイトへ反映する手順です。
-
-### 自動デプロイ
-
-GitHubの main ブランチに変更をプッシュすると、GitHub Actions が自動でビルドおよび公開を行います。
+main ブランチに変更をプッシュすると、GitHub Actions が自動で起動してビルドを行い、GitHub Pages に公開します。
+手動でサーバーにファイルをアップロードする必要はありません。
 
 ```bash
 git add .
-git commit -m "更新内容のメッセージ"
+git commit -m "更新内容を記述"
 git push origin main
 ```
 
-プッシュ完了から約3分で本番サイトが更新されます。
+プッシュ完了後、数分で本番サイトへ反映されます。
+進捗状況は GitHub リポジトリの Actions タブから確認できます。
 
 ### バージョンタグによる自動リリース
 
-ビルド済み成果物をバージョンごとに保存する場合は、Gitタグを付与してプッシュします。
+配布用やバックアップとして成果物を保存したい場合は、バージョンタグをプッシュします。
 
 ```bash
-git tag v3.0.9
-git push origin v3.0.9
+git tag v1.0.0
+git push origin v1.0.0
 ```
 
-GitHubの Releases ページに該当バージョンの成果物が自動生成されます。
+GitHub Actions が自動で dist フォルダを zip 形式に圧縮し、GitHub の Releases ページに配布ファイルを添付したリリースを生成します。
 
-### 手動ビルド
+### パッケージ更新時の注意点
 
-手動で静的ファイルを生成する場合は以下のコマンドを実行します。
+GitHub Actions のワークフローでは npm ci を実行して依存関係を復元します。
+ライブラリを追加または更新した場合は、package.json と一緒に package-lock.json も必ずコミットしてプッシュしてください。不整合があるとビルドに失敗します。
+
+### 手動でのビルド確認
+
+ローカル環境で本番と同じ静的ファイルを生成して検証する場合は、以下のコマンドを実行します。
 
 ```bash
 npm run build
+npm run preview
 ```
 
-生成された dist/ ディレクトリ内のファイルを Web サーバーへ配置してください。
-
----
+dist ディレクトリに生成された成果物が preview サーバーで動作確認できます。
 
 ## トラブルシューティング
 
-### `npm run dev` が失敗する場合
+### 開発サーバーが起動しない場合
 
-Node.jsのバージョンを確認してください。
+Node.js のバージョンを確認してください。
 
 ```bash
 node -v
 ```
 
-バージョンが 18 未満の場合は、Node.jsを再インストールしてください。
-
-また、以下の手順で依存パッケージを初期化して再インストールすることも有効です。
+バージョンが 20 未満の場合はアップデートしてください。
+また、以下のコマンドでパッケージを再インストールすると解決する場合があります。
 
 ```bash
 rm -rf node_modules package-lock.json
 npm install
 ```
 
-### ビルドエラーが発生する場合
+### 追加したページが本番で表示されない場合
 
-* HTMLタグの閉じ忘れや文法エラーがないか確認します。
-* `vite.config.js` に記載したファイルパスが正しいか確認します。
+* vite.config.js の rollupOptions.input に該当ファイルが正しく登録されているか確認してください。
+* ファイルパスの綴りや拡張子が合っているか確認してください。
 
-### 変更が反映されない場合
+### GitHub Actions のビルドが失敗する場合
 
-* ブラウザのスーパーリロード ( Ctrl + Shift + R ) を試します。
-* 開発サーバーを再起動します。
-* GitHubへプッシュが正常に完了しているか確認します。
+* リポジトリの Actions タブで失敗したステップのログを確認してください。
+* package.json と package-lock.json のバージョン差分がないか確認してください。
+* HTML や JavaScript の構文エラーがないか確認してください。
 
----
+## 運用チェックリスト
 
-## 運営チェックリスト
+### 定期的な確認事項
 
-### 定期確認項目
+* 終了したイベントバナーの非表示
+* 新年度のスタッフ情報の更新
+* 新規導入された機材情報の掲載
+* 外部リンクや内部リンクのリンク切れ確認
 
-* イベント終了後のバナー非表示処理
-* 年度初めのスタッフ情報更新
-* 新規導入機材の追加
-* デッドリンクの確認
-* バックアップ状態の確認
+### イベント開催時の流れ
 
-### イベント実施時の手順
-
-イベント開催前:
 * イベント詳細ページの作成
-* トップページへの告知バナー掲載
-* 各種案内 / 告知の実施
-
-イベント終了後:
-* 告知バナーの取り下げ
-* 記録 / レポートの追加 (任意)
-* バージョンタグのプッシュ (必要に応じて)
-
----
+* vite.config.js へのページ登録
+* トップページへの告知バナーの掲載
+* イベント終了後のバナー非表示処理
+* 必要に応じたバージョンタグのプッシュ
 
 ## ライセンス
 
 MIT License
-
-© 2025 舞鶴高専 ものつくりラボ
+(c) 舞鶴高専 ものつくりラボ

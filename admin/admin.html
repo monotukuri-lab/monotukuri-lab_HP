@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* ログイン画面 */
         .login-screen {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
             min-height: 100vh;
@@ -21,14 +20,13 @@
             backdrop-filter: blur(10px);
         }
 
-        /* ガイドセクション */
         .guide-section {
             transition: all 0.3s ease;
         }
 
         .guide-section:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
 
         .code-block {
@@ -80,12 +78,12 @@
         </div>
     </div>
 
-    <!-- 管理者コンテンツ（認証後に表示） -->
+    <!-- 管理者コンテンツ -->
     <div id="admin-content" class="hidden">
         <header class="site-header">
             <div class="site-header-inner">
                 <h1 class="site-title">
-                    <span class="text-blue-600">🔧 管理者ページ</span>
+                    <span class="text-blue-600">管理者ページ</span>
                 </h1>
                 <!-- ハンバーガーメニュー -->
                 <button id="menu-toggle" class="hamburger-btn" aria-label="メニュー">
@@ -119,130 +117,167 @@
         </header>
 
         <main class="site-main pb-12">
-            <div class="max-w-4xl mx-auto">
+            <div class="max-w-4xl mx-auto px-4">
 
-                <!-- ヘッダー -->
+                <!-- ページ見出し -->
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">サイト管理ガイド</h2>
-                    <p class="text-gray-600">ものつくりラボ公式サイトの運営・管理方法をまとめています</p>
+                    <p class="text-gray-600">舞鶴高専ものつくりラボ公式サイトの運用方法と編集手順です</p>
                     <a href="https://github.com/monotukuri-lab/monotukuri-lab_HP" target="_blank"
-                        class="inline-flex items-center mt-4 text-blue-600 hover:underline">
+                        class="inline-flex items-center mt-4 text-blue-600 hover:underline font-medium">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                         </svg>
-                        GitHubリポジトリを見る
+                        GitHubリポジトリを開く
                     </a>
                 </div>
 
-                <!-- 1. サイト構造 -->
-                <section class="guide-section card mb-6">
-                    <h3 class="section-subtitle flex items-center">
-                        <span
-                            class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">1</span>
-                        サイト構造
+                <!-- サイト構造 -->
+                <section class="guide-section bg-white rounded-xl shadow p-6 mb-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 pb-2 border-b flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                        </svg>
+                        サイトのディレクトリ構造
                     </h3>
                     <div class="space-y-4">
-                        <p class="text-gray-600">主要なフォルダ構成：</p>
+                        <p class="text-gray-600">主要なファイルとフォルダの役割です。</p>
                         <div class="code-block p-4 text-sm">
                             <pre>monotukuri-lab_HP/
-├── index.html           # トップページ
-├── pages/               # 公開ページ
-│   ├── activities.html
-│   ├── facility.html
-│   ├── members.html
-│   ├── contact.html
-│   ├── game.html
-│   └── python.html
-├── admin/               # 管理ページ
-├── events/              # イベントページ
-├── images/              # 画像ファイル
-├── css/style.css        # 共通スタイル
-├── js/                  # JavaScript
-└── vite.config.js       # ビルド設定</pre>
+├── index.html              # トップページ
+├── pages/                  # 公開ページ群
+│   ├── activities.html     # 活動内容とイベント一覧
+│   ├── facility.html       # 施設 / 機材紹介
+│   ├── members.html        # スタッフ紹介
+│   ├── contact.html        # お問い合わせ
+│   ├── game.html           # ミニゲーム
+│   └── python.html         # ブラウザPython環境
+├── events/                 # 各イベント専用ページ
+│   ├── 3dcontest2025.html  # 2025年3Dコンテスト
+│   ├── 3dcontest2026.html  # 2026年3Dコンテスト
+│   └── 3dprinter2025.html  # 2025年3Dプリンター講習会
+├── admin/                  # 管理者用ページ
+├── images/                 # 画像ファイル置き場
+├── css/style.css           # 共通スタイルシート
+├── js/                     # JavaScriptスクリプト
+├── vite.config.js          # ビルド / ルーティング設定
+└── .github/workflows/      # GitHub Actions自動化設定
+    └── build-and-release.yml</pre>
                         </div>
                     </div>
                 </section>
 
-                <!-- 2. 編集方法 -->
-                <section class="guide-section card mb-6">
-                    <h3 class="section-subtitle flex items-center">
-                        <span
-                            class="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">2</span>
-                        コンテンツ編集方法
+                <!-- コンテンツの編集方法 -->
+                <section class="guide-section bg-white rounded-xl shadow p-6 mb-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 pb-2 border-b flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                        コンテンツの編集手順
                     </h3>
-                    <div class="space-y-4">
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-                            <p class="font-semibold text-yellow-800">💡 基本的な流れ</p>
-                            <ol class="list-decimal list-inside mt-2 text-gray-700 space-y-1">
-                                <li>GitHubからリポジトリをクローン</li>
-                                <li>ローカルでHTMLファイルを編集</li>
-                                <li>変更をコミット&プッシュ</li>
-                                <li>GitHub Actionsで自動デプロイ</li>
-                            </ol>
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                            <p class="font-bold text-blue-900 mb-1">基本的な更新の流れ</p>
+                            <ul class="text-gray-700 space-y-1 text-sm">
+                                <li>* GitHubリポジトリを手元に取得して編集します</li>
+                                <li>* ローカル環境で npm run dev を実行して表示を確認します</li>
+                                <li>* 変更内容をコミットして main ブランチにプッシュします</li>
+                                <li>* GitHub Actions が自動でビルドを行いサイトを更新します</li>
+                            </ul>
                         </div>
 
-                        <h4 class="font-semibold text-gray-700 mt-4">新しいページを追加する場合</h4>
-                        <div class="code-block p-4 text-sm mt-2">
-                            <pre>// vite.config.js に追加
+                        <div>
+                            <h4 class="font-bold text-gray-700 mb-2">新しいページを追加する場合</h4>
+                            <p class="text-sm text-gray-600 mb-2">pages/ または events/ 配下にHTMLを作成し、vite.config.js の rollupOptions.input にパスを登録します。登録がないと本番ビルドに含まれません。</p>
+                            <div class="code-block p-4 text-sm">
+                                <pre>// vite.config.js の設定例
 rollupOptions: {
   input: {
+    main: resolve(__dirname, 'index.html'),
     // ...既存のページ
-    newpage: resolve(__dirname, 'pages/newpage.html'),
+    newpage: resolve(__dirname, 'events/newevent2026.html'),
   }
 }</pre>
+                            </div>
                         </div>
-                    </div>
-                </section>
 
-                <!-- 3. イベントバナー -->
-                <section class="guide-section card mb-6">
-                    <h3 class="section-subtitle flex items-center">
-                        <span
-                            class="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">3</span>
-                        イベントバナーの設置
-                    </h3>
-                    <div class="space-y-4">
-                        <p class="text-gray-600">トップページ（index.html）のコメントを外せばバナー表示できます</p>
-                        <div class="code-block p-4 text-sm mt-2">
-                            <pre>&lt;!-- イベント告知バナー --&gt;
-&lt;div class="max-w-xl mx-auto mt-8"&gt;
-  &lt;a href="events/イベント.html"
-    class="block bg-blue-600 text-white..."&gt;
-    イベントタイトル
+                        <div>
+                            <h4 class="font-bold text-gray-700 mb-2">イベント告知バナーの表示</h4>
+                            <p class="text-sm text-gray-600 mb-2">index.html の中にあるバナー部分のコメントアウトを外して、リンク先や開催日時を編集します。終了時は再度コメントアウトして非表示に戻します。</p>
+                            <div class="code-block p-4 text-sm">
+                                <pre>&lt;!-- index.html のイベント告知バナー部分 --&gt;
+&lt;div class="max-w-xl mx-auto mt-8 sm:mt-12 mb-6 sm:mb-8"&gt;
+  &lt;a href="events/3dcontest2026.html"
+    class="block bg-blue-600 hover:bg-blue-700 text-white text-center rounded-xl shadow-lg px-4 py-4"&gt;
+    &lt;div&gt;イベント名&lt;/div&gt;
+    &lt;div class="mt-2 text-yellow-300 font-bold"&gt;開催日時&lt;/div&gt;
   &lt;/a&gt;
 &lt;/div&gt;</pre>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 4. デプロイ -->
-                <section class="guide-section card mb-6">
-                    <h3 class="section-subtitle flex items-center">
-                        <span
-                            class="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">4</span>
-                        デプロイ方法
+                <!-- 公開とデプロイの運用 -->
+                <section class="guide-section bg-white rounded-xl shadow p-6 mb-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 pb-2 border-b flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                        公開とリリースの運用フロー
                     </h3>
-                    <div class="space-y-4">
-                        <h4 class="font-semibold text-gray-700">自動デプロイ（推奨）</h4>
-                        <div class="code-block p-4 text-sm mt-2">
-                            <pre>git add .
-git commit -m "変更内容"
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-gray-700 mb-2">自動デプロイ（mainブランチへのプッシュ）</h4>
+                            <p class="text-sm text-gray-600 mb-2">main ブランチにプッシュすると、GitHub Actions が自動で起動してビルドを行い、GitHub Pages へ即座に反映します。手動アップロードは不要です。</p>
+                            <div class="code-block p-4 text-sm">
+                                <pre>git add .
+git commit -m "更新内容を記述"
 git push origin main</pre>
+                            </div>
                         </div>
 
-                        <h4 class="font-semibold text-gray-700 mt-4">自動リリース（バージョン管理）</h4>
-                        <p class="text-sm text-gray-600">タグを付けてプッシュすると、ビルド済み成果物がGitHubのReleasesに保存されます</p>
-                        <div class="code-block p-4 text-sm mt-2">
-                            <pre>git tag v1.0.0
+                        <div>
+                            <h4 class="font-bold text-gray-700 mb-2">自動リリース（バージョンタグによる配布物作成）</h4>
+                            <p class="text-sm text-gray-600 mb-2">タグを付けてプッシュすると、GitHub Actions がビルド成果物を zip 形式に圧縮し、GitHubの Releases ページに自動で配布ファイルを作成します。</p>
+                            <div class="code-block p-4 text-sm">
+                                <pre>git tag v1.0.0
 git push origin v1.0.0</pre>
+                            </div>
                         </div>
 
-                        <h4 class="font-semibold text-gray-700 mt-4">手動ビルド</h4>
-                        <div class="code-block p-4 text-sm mt-2">
-                            <pre>npm install
-npm run build
-# dist/をサーバーにアップロード</pre>
+                        <div>
+                            <h4 class="font-bold text-gray-700 mb-2">ローカルでのビルド事前検証</h4>
+                            <p class="text-sm text-gray-600 mb-2">プッシュ前に本番向けビルドの成否を確認したい場合は、以下のコマンドを実行してプレビューサーバーで動作を確認します。</p>
+                            <div class="code-block p-4 text-sm">
+                                <pre>npm run build
+npm run preview</pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- トラブルシューティング -->
+                <section class="guide-section bg-white rounded-xl shadow p-6 mb-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 pb-2 border-b flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        トラブルシューティング
+                    </h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="border rounded-lg p-4 bg-gray-50">
+                            <h4 class="font-bold text-gray-800 mb-1">GitHub Actions のビルドが失敗する場合</h4>
+                            <p class="text-gray-600">ワークフロー内では npm ci を実行します。package.json を変更した時は、必ず package-lock.json も一緒にコミットしてプッシュしてください。</p>
+                        </div>
+                        <div class="border rounded-lg p-4 bg-gray-50">
+                            <h4 class="font-bold text-gray-800 mb-1">追加したページが本番で 404 になる場合</h4>
+                            <p class="text-gray-600">vite.config.js の rollupOptions.input にパスが指定されているか確認してください。</p>
+                        </div>
+                        <div class="border rounded-lg p-4 bg-gray-50">
+                            <h4 class="font-bold text-gray-800 mb-1">開発サーバーが起動しない場合</h4>
+                            <p class="text-gray-600">Node.js のバージョンが 20 以上であることを確認してください。node_modules フォルダを削除して npm install を実行し直すと直る場合があります。</p>
                         </div>
                     </div>
                 </section>
@@ -251,7 +286,7 @@ npm run build
         </main>
 
         <footer class="site-footer">
-            <p>&copy; 2025 舞鶴高専 ものつくりラボ</p>
+            <p>&copy; 2026 舞鶴高専 ものつくりラボ</p>
         </footer>
     </div>
 
@@ -288,7 +323,7 @@ npm run build
                 adminContent.classList.remove('hidden');
             }
 
-            // ログアウト
+            // ログアウト処理
             document.addEventListener('click', function (e) {
                 if (e.target.id === 'logout-btn' || e.target.id === 'logout-btn-mobile') {
                     sessionStorage.removeItem('adminAuthenticated');
