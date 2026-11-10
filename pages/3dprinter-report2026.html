@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3Dプリンター利用実績データ分析（2026年4月～10月） | 舞鶴高専 ものつくりラボ</title>
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1 class="site-title">舞鶴高専 ものつくりラボ</h1>
+      <button id="menu-toggle" class="hamburger-btn" aria-label="メニュー">
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all"></span>
+      </button>
+      <nav class="nav-desktop">
+        <a href="../index.html" class="hover:text-blue-500">ホーム</a>
+        <a href="activities.html" class="hover:text-blue-500">活動</a>
+        <a href="facility.html" class="hover:text-blue-500">施設</a>
+        <a href="members.html" class="hover:text-blue-500">スタッフ</a>
+        <a href="contact.html" class="hover:text-blue-500">お問い合わせ</a>
+      </nav>
+    </div>
+    <nav id="mobile-menu" class="nav-mobile">
+      <div class="nav-mobile-inner">
+        <a href="../index.html" class="block py-2 hover:text-blue-500">ホーム</a>
+        <a href="activities.html" class="block py-2 hover:text-blue-500">活動</a>
+        <a href="facility.html" class="block py-2 hover:text-blue-500">施設</a>
+        <a href="members.html" class="block py-2 hover:text-blue-500">スタッフ</a>
+        <a href="contact.html" class="block py-2 hover:text-blue-500">お問い合わせ</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="site-main max-w-4xl mx-auto px-4 py-8">
+    <div class="mb-6">
+      <a href="activities.html" class="text-blue-600 hover:underline text-sm inline-flex items-center gap-1">
+        <span>←</span>
+        <span>活動一覧に戻る</span>
+      </a>
+    </div>
+
+    <article class="bg-white rounded-2xl shadow-sm border border-gray-200/80 p-6 sm:p-10">
+      <div class="flex items-center gap-2 mb-3">
+        <span
+          class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-0.5 rounded-md border border-blue-200">利用実績レポート</span>
+        <span class="text-xs text-gray-500">集計期間: 2026年4月～10月</span>
+      </div>
+
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 leading-tight">
+        3Dプリンター利用実績データ分析（2026年4月～10月）
+      </h1>
+
+      <p class="text-gray-600 leading-relaxed mb-8">
+        ものつくりラボに設置されている3Dプリンターを対象として、2026年4月から10月までの稼働状況を回数ベースで再集計しました。故障によるキャンセルデータを除外し、実際に造形が行われた有効セッションを分析しています。なお、３Dプリンター利用管理用のシステムを使わずに使用したものは含まれていません。
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+          <div class="text-xs text-gray-500 mb-1">総利用回数</div>
+          <div class="text-2xl sm:text-3xl font-bold text-blue-600">91<span
+              class="text-sm font-normal text-gray-600 ml-1">回</span></div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+          <div class="text-xs text-gray-500 mb-1">Adventurer 4</div>
+          <div class="text-2xl sm:text-3xl font-bold text-teal-600">89<span
+              class="text-sm font-normal text-gray-600 ml-1">%</span></div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+          <div class="text-xs text-gray-500 mb-1">Raise3D Pro3</div>
+          <div class="text-2xl sm:text-3xl font-bold text-amber-600">11<span
+              class="text-sm font-normal text-gray-600 ml-1">%</span></div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+          <div class="text-xs text-gray-500 mb-1">最多利用月</div>
+          <div class="text-2xl sm:text-3xl font-bold text-rose-600">10<span
+              class="text-sm font-normal text-gray-600 ml-1">月 (36回)</span></div>
+        </div>
+      </div>
+
+      <section class="mb-10">
+        <h2 class="text-xl font-bold text-gray-900 border-b border-gray-200 pb-2 mb-4">
+          データ可視化グラフ
+        </h2>
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 sm:p-4 mb-3 overflow-hidden shadow-inner">
+          <img src="../images/3dprinter-analysis-2026.png" alt="3Dプリンター利用分析グラフ (2026年4月～10月)"
+            class="w-full h-auto rounded-lg shadow-sm" />
+        </div>
+        <p class="text-xs text-gray-500 text-right">
+          ※ グラフ左上: 機種×月別セッション数 / 右上: 機種別合計 / 左下: 月別推移 / 右下: 機種別比率
+        </p>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-xl font-bold text-gray-900 border-b border-gray-200 pb-2 mb-4">
+          プリンター種類と年月ごとの利用回数
+        </h2>
+        <div class="overflow-x-auto mb-3">
+          <table class="min-w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-slate-100 text-gray-700">
+              <tr>
+                <th class="py-2.5 px-3 text-left font-semibold border-b">プリンター種類</th>
+                <th class="py-2.5 px-3 text-center font-semibold border-b">4月</th>
+                <th class="py-2.5 px-3 text-center font-semibold border-b">5月</th>
+                <th class="py-2.5 px-3 text-center font-semibold border-b">6月</th>
+                <th class="py-2.5 px-3 text-center font-semibold border-b">7月</th>
+                <th class="py-2.5 px-3 text-center font-semibold border-b">9月</th>
+                <th class="py-2.5 px-3 text-center font-semibold border-b">10月</th>
+                <th class="py-2.5 px-3 text-center font-semibold border-b bg-slate-200/70">合計</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 text-gray-800">
+              <tr class="hover:bg-gray-50">
+                <td class="py-2.5 px-3 font-medium">Adventurer 4</td>
+                <td class="py-2.5 px-3 text-center">9</td>
+                <td class="py-2.5 px-3 text-center">5</td>
+                <td class="py-2.5 px-3 text-center">8</td>
+                <td class="py-2.5 px-3 text-center font-semibold text-blue-600">21</td>
+                <td class="py-2.5 px-3 text-center">4</td>
+                <td class="py-2.5 px-3 text-center font-semibold text-rose-600">34</td>
+                <td class="py-2.5 px-3 text-center font-bold bg-slate-50">81</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="py-2.5 px-3 font-medium">Raise3D Pro3</td>
+                <td class="py-2.5 px-3 text-center">2</td>
+                <td class="py-2.5 px-3 text-center">1</td>
+                <td class="py-2.5 px-3 text-center text-gray-400">0</td>
+                <td class="py-2.5 px-3 text-center">4</td>
+                <td class="py-2.5 px-3 text-center">1</td>
+                <td class="py-2.5 px-3 text-center">2</td>
+                <td class="py-2.5 px-3 text-center font-bold bg-slate-50">10</td>
+              </tr>
+              <tr class="bg-blue-50/60 font-bold">
+                <td class="py-2.5 px-3 text-blue-900">月別合計</td>
+                <td class="py-2.5 px-3 text-center">11</td>
+                <td class="py-2.5 px-3 text-center">6</td>
+                <td class="py-2.5 px-3 text-center">8</td>
+                <td class="py-2.5 px-3 text-center text-blue-700">25</td>
+                <td class="py-2.5 px-3 text-center">5</td>
+                <td class="py-2.5 px-3 text-center text-rose-700">36</td>
+                <td class="py-2.5 px-3 text-center text-blue-900 bg-blue-100/60">91</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-500">※ 8月は夏期休業および長期休暇期間のため集計対象外となっています。</p>
+      </section>
+
+      <section class="mb-10 space-y-4">
+        <h2 class="text-xl font-bold text-gray-900 border-b border-gray-200 pb-2 mb-4">
+          データから見られる傾向と考察
+        </h2>
+
+        <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+          <h3 class="font-bold text-gray-900 text-base mb-2">
+            Adventurer 4 が全体の約89%を占める理由
+          </h3>
+          <p class="text-sm text-gray-700 leading-relaxed">
+            全体の利用回数91回のうち、81回が Adventurer 4
+            で造形されています。取り回しの良さや立ち上がりの早さ、日常的な試作に適した扱いやすさが、学生の日常的な利用につながっていると考えられます。一方で大型造形や高機能材料に対応する Raise3D Pro3
+            は合計10回にとどまっており、用途に応じた使い分けがなされていることが伺えます。
+          </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+          <h3 class="font-bold text-gray-900 text-base mb-2">
+            7月と10月に訪れる2大ピーク
+          </h3>
+          <p class="text-sm text-gray-700 leading-relaxed">
+            月別の利用推移を見ると、7月に25回、10月に36回の利用が集中しています。7月は夏休み前の学内コンテスト準備や前期末の制作課題が重なる時期です。また10月は高専祭の準備やコンテストの作品締切、卒業研究の試作が重なるため、年間を通して最も活発に利用される期間となっています。
+          </p>
+        </div>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-6 border border-blue-200 text-sm text-gray-800 leading-relaxed">
+        <h2 class="font-bold text-blue-900 text-base mb-2">まとめ</h2>
+        <p class="mb-2">
+          回数ベースでの分析結果から、手軽に扱えるプリンターへの需要が非常に高いこと、時期によって利用頻度の波が大きいことがわかりました。
+        </p>
+        <p>
+          ラボではピーク時の混雑緩和や、大型・特殊造形における Raise3D Pro3 の活用サポートにも力を入れています。造形サイズや材料の相談、スライサーソフトの設定など、疑問があれば気軽にスタッフやTAへご相談ください。
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 舞鶴高専 ものつくりラボ</p>
+  </footer>
+  <script type="module" src="../js/mobile-menu.js"></script>
+</body>
+
+</html>

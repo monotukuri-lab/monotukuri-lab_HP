@@ -51,6 +51,7 @@ npm run dev
 * pages/contact.html: お問い合わせフォーム
 * pages/game.html: ミニゲームページ
 * pages/python.html: ブラウザ上でのPython実行環境
+* pages/3dprinter-report2026.html: 3Dプリンター利用実績データ分析レポート
 * events/: 各イベント専用の詳細ページ
 * events/3dcontest2025.html: 2025年3Dコンテスト
 * events/3dcontest2026.html: 2026年3Dコンテスト
